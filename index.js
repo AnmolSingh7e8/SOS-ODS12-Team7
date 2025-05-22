@@ -76,17 +76,15 @@ app.get('/api/compromisos/:index', (req, res) => {
 
 // Ruta para el buscador de compromisos por índice
 app.get('/buscador', (req, res) => {
-    let resultado;
-    if (req.query.index !== undefined) {
-        const db = readData();
-        const idx = parseInt(req.query.index, 10);
-        if (Array.isArray(db.compromisos) && db.compromisos[idx]) {
-            resultado = { compromiso: db.compromisos[idx] };
-        } else {
-            resultado = { error: 'Compromís no trobat' };
-        }
+    const db = readData();
+    let encontrados = [];
+    if (req.query.municipio) {
+        const texto = req.query.municipio.trim().toLowerCase();
+        encontrados = (Array.isArray(db) ? db : [db]).filter(
+            item => item.municipi && item.municipi.toLowerCase().includes(texto)
+        );
     }
-    res.render('buscador', { resultado });
+    res.render('buscador', { encontrados });
 });
 
 
