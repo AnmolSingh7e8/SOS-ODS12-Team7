@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscador por Municipio</title>
+  <link rel="stylesheet" href="/style/buscador.css">
+</head>
+<body>
+  <div class="buscador-container">
+    <h2>Buscar Municipio</h2>
+    <form id="form-busqueda" autocomplete="off">
+      <input type="text" id="buscador" placeholder="Escribe el municipio..." required>
+      <button type="submit">Buscar</button>
+    </form>
+    <div id="resultado"></div>
+  </div>
+  <script>
+    // Pasamos todos los datos del JSON al JS
+    const datos = <%- JSON.stringify(datos) %>; //Corregir
+    const form = document.getElementById('form-busqueda');
+    const input = document.getElementById('buscador');
+    const resultado = document.getElementById('resultado');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const texto = input.value.trim().toLowerCase();
+      if (!texto) {
+        resultado.innerHTML = '';
+        return;
+      }
+      // Filtra los municipios que coinciden (parcial o exacto)
+      const encontrados = datos.filter(item => item.municipi && item.municipi.toLowerCase().includes(texto));
+      if (encontrados.length > 0) {
+        resultado.innerHTML = '<b>Resultados:</b>' + encontrados.map(m =>
+          `<div class="municipio-card">
+            <strong>${m.municipi}</strong>
+            <ul>
+              ${Object.entries(m).map(([k, v]) => `<li><b>${k}:</b> ${v}</li>`).join('')}
+            </ul>
+          </div>`
+        ).join('');
+      } else {
+        resultado.innerHTML = '<span style="color:red;">No se encontró ningún municipio.</span>';
+      }
+    });
+  </script>
+</body>
+</html>

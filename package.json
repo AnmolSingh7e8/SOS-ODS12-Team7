@@ -2,7 +2,9 @@
   "name": "sos-ods12-team7",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +28,6 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "nodemon" : "^3.1.10"
+    "nodemon": "^3.1.10"
   }
 }

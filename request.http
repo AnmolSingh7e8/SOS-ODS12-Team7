@@ -1,0 +1,20 @@
+### Obtener mensaje principal
+GET http://localhost:3000/
+
+### Obtener información sobre ODS 12
+GET http://localhost:3000/ods12
+
+### Obtener compromisos personales
+GET http://localhost:3000/compromisos
+
+### Guardar datos en Db.json
+POST http://localhost:3000/db
+Content-Type: application/json
+
+{
+  "nombre": "Anmol",
+  "compromisos": [
+    "Redueixo l'ús de plàstics d'un sol ús.",
+    "Reciclo i reutilitzo materials sempre que puc."
+  ]
+}
