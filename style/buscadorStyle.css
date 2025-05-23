@@ -1,66 +1,136 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  margin: 0;
-  padding: 0;
+      background: #f4f6f8;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+    background-color: #bf8b2e;
+    color: #fff;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.buscador-container {
-  background: #fff;
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+h1 {
+    margin-bottom: 0.2em;
+    font-size: 2.5rem;
 }
 
 h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 1.3rem;
 }
 
-#buscador {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 18px;
-  font-size: 16px;
-  transition: border-color 0.2s;
+nav {
+    background: #fffbe6;
+    padding: 0.5rem 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 
-#buscador:focus {
-  border-color: #007bff;
-  outline: none;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-#lista-municipios {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.municipio-card {
-  background: #f9f9f9;
-  border-radius: 8px;
-  margin: 18px 0;
-  padding: 12px 16px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.municipio-card ul {
-  margin: 0;
-  padding-left: 18px;
-}
-.municipio-card li {
-  font-size: 15px;
-  margin-bottom: 2px;
+nav a {
+    color: #b8860b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
-#lista-municipios li:last-child {
-  border-bottom: none;
+nav a:hover {
+    color: #ff8800;
 }
 
-#lista-municipios li:hover {
-  background: #f0f8ff;
-  cursor: pointer;
-}
+    .buscador-container {
+      background: #fff;
+      max-width: 500px;
+      margin: 40px auto 0 auto;
+      padding: 32px 28px 24px 28px;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+    }
+    h2 {
+      text-align: center;
+      color: #b8860b;
+      margin-bottom: 24px;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    input[type="text"] {
+      flex: 1 1 160px;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color: #ffd600;
+      outline: none;
+    }
+    button[type="submit"] {
+      padding: 10px 24px;
+      background: #ffd600;
+      color: #222;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button[type="submit"]:hover {
+      background: #ffe066;
+    }
+    .resultados {
+      margin-top: 18px;
+    }
+    .municipio-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      margin: 18px 0;
+      padding: 14px 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      border-left: 5px solid #ffd600;
+    }
+    .municipio-card strong {
+      color: #b8860b;
+      font-size: 1.1em;
+    }
+    .municipio-card ul {
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+    }
+    .municipio-card li {
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .no-result {
+      color: #c00;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 18px;
+    }
+    @media (max-width: 600px) {
+      .buscador-container {
+        padding: 16px 6px 12px 6px;
+      }
+      form {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }

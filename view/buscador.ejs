@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Buscador por Municipio</title>
+  <title>Buscador por Municipio y Año</title>
   <link rel="stylesheet" href="/style/buscadorStyle.css">
 </head>
+
 <body>
-   <div class="buscador-container">
-    <h2>Buscar Municipio</h2>
+  <header>
+    <h1>Contacte i Recursos ODS 12</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/">Inici</a></li>
+      <li><a href="#contacte">Contacte</a></li>
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="/buscador">Buscador</a></li>
+      <li><a href="/mapa">Mapa</a></li>
+
+    </ul>
+  </nav>
+  <div class="buscador-container">
+    <h2>Buscar Municipio y/o Año</h2>
     <form method="get" action="/buscador" autocomplete="off">
-      <input type="text" name="municipio" placeholder="Escribe el municipio..." required>
+      <input type="text" name="municipio" placeholder="Escribe el municipio...">
+      <input type="text" name="anyo" placeholder="Escribe el año...">
       <button type="submit">Buscar</button>
     </form>
     <div id="resultado">
-      <% if (typeof encontrados !== 'undefined') { %>
-        <% if (encontrados.length > 0) { %>
+      <% if (typeof encontrados !=='undefined' ) { %>
+        <% if (encontrados.length> 0) { %>
           <b>Resultados:</b>
           <% encontrados.forEach(function(m) { %>
             <div class="municipio-card">
-              <strong><%= m.municipi %></strong>
-              <ul>
-                <% Object.entries(m).forEach(function([k, v]) { %>
-                  <li><b><%= k %>:</b> <%= v %></li>
-                <% }); %>
-              </ul>
+              <strong>
+                <%= m.municipi %>
+              </strong> - <b>Año:</b>
+              <%= m.any %>
+                <ul>
+                  <% Object.entries(m).forEach(function([k, v]) { %>
+                    <li><b>
+                        <%= k %>:
+                      </b>
+                      <%= v %>
+                    </li>
+                    <% }); %>
+                </ul>
             </div>
-          <% }); %>
-        <% } else { %>
-          <span style="color:red;">No se encontró ningún municipio.</span>
-        <% } %>
-      <% } %>
+            <% }); %>
+              <% } else { %>
+                <span style="color:red;">No se encontró ningún municipio o año.</span>
+                <% } %>
+                  <% } %>
     </div>
   </div>
 </body>
+
 </html>

@@ -10,7 +10,7 @@ const dbPath = path.join(__dirname, 'Db.json');
 
 const readData = () => {
     try {
-        const data = fs.readFileSync(dbPath, 'utf8');
+        const data = fs.readFileSync("./Db.json");
         return JSON.parse(data || '{}');
     } catch (error) {
         console.error(error);
@@ -20,7 +20,7 @@ const readData = () => {
 
 const writeData = (data) => {
     try {
-        fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+        fs.writeFileSync("./Db.json", JSON.stringify(data, null, 2));
     } catch (error) {
         console.error(error);
     }
@@ -78,15 +78,27 @@ app.get('/api/compromisos/:index', (req, res) => {
 app.get('/buscador', (req, res) => {
     const db = readData();
     let encontrados = [];
-    if (req.query.municipio) {
-        const texto = req.query.municipio.trim().toLowerCase();
-        encontrados = (Array.isArray(db) ? db : [db]).filter(
-            item => item.municipi && item.municipi.toLowerCase().includes(texto)
-        );
+    const municipio = req.query.municipio ? req.query.municipio.trim().toLowerCase() : '';
+    const anyo = req.query.anyo ? req.query.anyo.trim() : '';
+    if (municipio || anyo) {
+        encontrados = (Array.isArray(db) ? db : [db]).filter(item => {
+            const matchMunicipio = municipio ? (item.municipi && item.municipi.toLowerCase().includes(municipio)) : true;
+            const matchAnyo = anyo ? (item.any && item.any.toString() === anyo) : true;
+            return matchMunicipio && matchAnyo;
+        });
     }
     res.render('buscador', { encontrados });
 });
 
+app.get('/mapa', (req, res) => {
+    const db = readData();
+    res.render('mapa', { datos: Array.isArray(db) ? db : [db] });
+});
+
+app.get('/api/datos', (req, res) => {
+    const db = readData();
+    res.json(Array.isArray(db) ? db : [db]);
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor API escoltant a http://localhost:${PORT}`);
