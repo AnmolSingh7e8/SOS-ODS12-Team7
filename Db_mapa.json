@@ -1,0 +1,116 @@
+[
+  {
+    "Municipi":"Barcelona",
+    "Generació Residus Municipal Totals":747995.9300000001,
+    "lat":41.3825802,
+    "lon":2.177073
+  },
+  {
+    "Municipi":"Hospitalet de Llobregat, l'",
+    "Generació Residus Municipal Totals":105143.24,
+    "lat":41.3598601,
+    "lon":2.0997927
+  },
+  {
+    "Municipi":"Badalona",
+    "Generació Residus Municipal Totals":95848.46,
+    "lat":41.4493539,
+    "lon":2.248254
+  },
+  {
+    "Municipi":"Sabadell",
+    "Generació Residus Municipal Totals":92276.69,
+    "lat":41.5421013,
+    "lon":2.1138977
+  },
+  {
+    "Municipi":"Terrassa",
+    "Generació Residus Municipal Totals":81599.65,
+    "lat":41.5629623,
+    "lon":2.0100492
+  },
+  {
+    "Municipi":"Lleida",
+    "Generació Residus Municipal Totals":63762.02,
+    "lat":41.6147605,
+    "lon":0.6267842
+  },
+  {
+    "Municipi":"Tarragona",
+    "Generació Residus Municipal Totals":61234.33,
+    "lat":41.1172364,
+    "lon":1.2546057
+  },
+  {
+    "Municipi":"Mataró",
+    "Generació Residus Municipal Totals":57048.73,
+    "lat":41.5398348,
+    "lon":2.4448926
+  },
+  {
+    "Municipi":"Reus",
+    "Generació Residus Municipal Totals":51570.62,
+    "lat":41.1555564,
+    "lon":1.1076133
+  },
+  {
+    "Municipi":"Santa Coloma de Gramenet",
+    "Generació Residus Municipal Totals":45412.47,
+    "lat":41.4515626,
+    "lon":2.2083371
+  },
+  {
+    "Municipi":"Girona",
+    "Generació Residus Municipal Totals":44038.92,
+    "lat":41.9793006,
+    "lon":2.8199439
+  },
+  {
+    "Municipi":"Sant Cugat del Vallès",
+    "Generació Residus Municipal Totals":37901.35,
+    "lat":41.4728432,
+    "lon":2.0817809
+  },
+  {
+    "Municipi":"Sant Boi de Llobregat",
+    "Generació Residus Municipal Totals":35836.55,
+    "lat":41.3459033,
+    "lon":2.0413673
+  },
+  {
+    "Municipi":"Manresa",
+    "Generació Residus Municipal Totals":35017.89,
+    "lat":41.7288939,
+    "lon":1.8286765
+  },
+  {
+    "Municipi":"Castelldefels",
+    "Generació Residus Municipal Totals":34854.22,
+    "lat":41.2861022,
+    "lon":1.9824173
+  },
+  {
+    "Municipi":"Lloret de Mar",
+    "Generació Residus Municipal Totals":34507.78,
+    "lat":41.6973503,
+    "lon":2.8392392
+  },
+  {
+    "Municipi":"Cornellà de Llobregat",
+    "Generació Residus Municipal Totals":34194.71,
+    "lat":41.355724,
+    "lon":2.0706225
+  },
+  {
+    "Municipi":"Vilanova i la Geltrú",
+    "Generació Residus Municipal Totals":33429.19,
+    "lat":41.2241992,
+    "lon":1.7256327
+  },
+  {
+    "Municipi":"Rubí",
+    "Generació Residus Municipal Totals":32621.76,
+    "lat":41.4936194,
+    "lon":2.0319476
+  }
+]

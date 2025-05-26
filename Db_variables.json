@@ -1,0 +1,187 @@
+[
+    {
+        "Nom_Variable": "ESTUDIO",
+        "Tipus": "Alfanumérica",
+        "Text_Extra": "P0227_06_23 Habitos de consumo de Barcelona"
+    },
+    {
+        "Nom_Variable": "ESTUDIOCOD",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "ESTUDIOCOD"
+    },
+    {
+        "Nom_Variable": "ID_CONTACTO",
+        "Tipus": "Numérica métrica",
+        "Text_Extra": "ID_CONTACTO"
+    },
+    {
+        "Nom_Variable": "ESTADO",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "ESTADO"
+    },
+    {
+        "Nom_Variable": "IDGUIDCONTACTO",
+        "Tipus": "Alfanumérica",
+        "Text_Extra": "IDGUIDCONTACTO"
+    },
+    {
+        "Nom_Variable": "AUTONO_BD",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "AUTONO_BD"
+    },
+    {
+        "Nom_Variable": "TIPO_TEL_BD",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "TIPO_TEL_BD"
+    },
+    {
+        "Nom_Variable": "PROVIN_BD",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "PROVIN_BD"
+    },
+    {
+        "Nom_Variable": "CMUN_BD",
+        "Tipus": "Numérica ordinal",
+        "Text_Extra": "CMUN_BD"
+    },
+    {
+        "Nom_Variable": "IDEND",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "IDEND"
+    },
+    {
+        "Nom_Variable": "INTRO",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "INTRO"
+    },
+    {
+        "Nom_Variable": "PROVIN_CUOTA",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "PROVIN_CUOTA"
+    },
+    {
+        "Nom_Variable": "PROVIN",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "A quina província vius?"
+    },
+    {
+        "Nom_Variable": "CMUN",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "Municipi vius?"
+    },
+    {
+        "Nom_Variable": "AUTONO",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "Comunitat Autònoma vius?"
+    },
+    {
+        "Nom_Variable": "POBLACION",
+        "Tipus": "Numérica métrica",
+        "Text_Extra": "Nº Habitants del municipi"
+    },
+    {
+        "Nom_Variable": "HABITAT_1",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "Grandària de l'hàbitat"
+    },
+    {
+        "Nom_Variable": "HABITAT_2",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "Grandària de l'hàbitat 2"
+    },
+    {
+        "Nom_Variable": "CAPITAL",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "CAPITAL"
+    },
+    {
+        "Nom_Variable": "COMARCA",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "COMARCA"
+    },
+    {
+        "Nom_Variable": "SUB_COMARCA",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "SUB_COMARCA"
+    },
+    {
+        "Nom_Variable": "MUN_CUOTA",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "MUNICIPI"
+    },
+    {
+        "Nom_Variable": "P4_MUN_1",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "4.2.1. Ens podria especificar en quin municipi compra Alimentació fresca?"
+    },
+    {
+        "Nom_Variable": "P4_MUN_1_OT",
+        "Tipus": "Alfanumérica",
+        "Text_Extra": "4.2.1. Ens podria especificar a quin municipi? - Altres Municipis"
+    },
+    {
+        "Nom_Variable": "P4_MUN_2",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "4.2.1. Ens podria especificar en quin municipi compra Resta d'alimentació?"
+    },
+    {
+        "Nom_Variable": "P4_MUN_2_OT",
+        "Tipus": "Alfanumérica",
+        "Text_Extra": "4.2.1. Ens podria especificar a quin municipi? - Altres Municipis"
+    },
+    {
+        "Nom_Variable": "P4A_TIPO_1",
+        "Tipus": "Múltiple",
+        "Text_Extra": "4.3. Ens podria dir normalment a quin tipus d’establiment compra... Alimentació fresca? (Barri)"
+    },
+    {
+        "Nom_Variable": "P4A_TIPO_2",
+        "Tipus": "Múltiple",
+        "Text_Extra": "4.3. Ens podria dir normalment a quin tipus d’establiment compra... Resta d’alimentació? (Barri)"
+    },
+    {
+        "Nom_Variable": "P5_1",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.1. Productes de producció ecològica - quina importància té per a vostè que els comerços on compra tinguin …"
+    },
+    {
+        "Nom_Variable": "P5_2",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.2. Productes produïts a menys de 100 km de casa (PROXIMITAT) - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_3",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.3. Productes directament del productor - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_4",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.4. Productes elaborats artesanalment - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_5",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.5. Productes de comerç just - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_6",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.6. Empaquetatge sostenible o ús de recipients reutilitzables - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_7",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.7. Canal de comunicació directe amb el comerç (telèfon, WhatsApp,...) - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_8",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.8. Plataforma de compra en línia - quina importància té per a vostè que els comerços on compra tinguin ..."
+    },
+    {
+        "Nom_Variable": "P5_9",
+        "Tipus": "Categoría\/Nominal",
+        "Text_Extra": "5.9. Servei d’enviament a domicili - quina importància té per a vostè que els comerços on compra tinguin ..."
+    }
+]

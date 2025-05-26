@@ -50,6 +50,10 @@ app.get('/api/db', (req, res) => {
     res.json(db);
 });
 
+app.get('/info', (req, res) => {
+  res.render('info');
+});
+
 // API: Obtener solo los compromisos
 app.get('/api/compromisos', (req, res) => {
     const db = readData();
@@ -91,12 +95,14 @@ app.get('/buscador', (req, res) => {
 });
 
 app.get('/mapa', (req, res) => {
-    const db = readData();
+    const dbMapaPath = path.join(__dirname, 'Db_mapa.json');
+    const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
     res.render('mapa', { datos: Array.isArray(db) ? db : [db] });
 });
 
 app.get('/api/datos', (req, res) => {
-    const db = readData();
+    const dbMapaPath = path.join(__dirname, 'Db_mapa.json');
+    const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
     res.json(Array.isArray(db) ? db : [db]);
 });
 

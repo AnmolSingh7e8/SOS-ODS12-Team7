@@ -1,46 +1,46 @@
 header {
-    background-color: #bf8b2e;
-    color: #fff;
-    padding: 2rem 1rem 1rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background-color: #bf8b2e;
+  color: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
-    margin-bottom: 0.2em;
-    font-size: 2.5rem;
+  margin-bottom: 0.2em;
+  font-size: 2.5rem;
 }
 
 h2 {
-    margin-top: 0;
-    font-weight: 400;
-    font-size: 1.3rem;
+  margin-top: 0;
+  font-weight: 400;
+  font-size: 1.3rem;
 }
 
 nav {
-    background: #fffbe6;
-    padding: 0.5rem 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  background: #fffbe6;
+  padding: 0.5rem 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
-    color: #b8860b;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
+  color: #b8860b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 nav a:hover {
-    color: #ff8800;
+  color: #ff8800;
 }
 
 .mapa-lista {
@@ -48,18 +48,45 @@ nav a:hover {
   margin: 40px auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   padding: 24px;
 }
+
 .mapa-lista table {
   width: 100%;
   border-collapse: collapse;
 }
-.mapa-lista th, .mapa-lista td {
+
+.mapa-lista th,
+.mapa-lista td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
 }
+
 .mapa-lista th {
   background: #ffd600;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
