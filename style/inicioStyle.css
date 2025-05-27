@@ -1,41 +1,58 @@
-body {
+body, html {
+      height: 100%;
       margin: 0;
       padding: 0;
-      background: #f4f6f8;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+    }
+    .inicio-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      filter: blur(6px) brightness(0.7);
+      z-index: 1;
     }
     .inicio-container {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      width: 100vw;
-    }
-    .inicio-img {
-      max-width: 350px;
-      width: 90vw;
-      margin-bottom: 40px;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      align-items: center;
+      z-index: 2;
     }
     .btn-empezar {
       background: #ffd600;
       color: #333;
       border: none;
       border-radius: 8px;
-      padding: 18px 48px;
-      font-size: 1.4em;
+      padding: 22px 60px;
+      font-size: 2em;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
       transition: background 0.2s, transform 0.2s;
     }
     .btn-empezar:hover {
       background: #ffe066;
-      transform: scale(1.04);
+      transform: scale(1.05);
+    }
+
+    .fade-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s;
+      z-index: 99;
+    }
+    .fade-overlay.active {
+      opacity: 1;
+      pointer-events: all;
     }

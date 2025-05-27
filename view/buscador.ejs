@@ -13,11 +13,11 @@
   </header>
   <nav>
     <ul>
-      <li><a href="/">Inici</a></li>
-      <li><a href="/info">Recerca</a></li>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/info">Investigación</a></li>
       <li><a href="/buscador">Buscador</a></li>
       <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#contacte">Contacte</a></li>
+      <li><a href="#contacte">Contacto</a></li>
 
     </ul>
   </nav>
@@ -29,30 +29,26 @@
       <button type="submit">Buscar</button>
     </form>
     <div id="resultado">
-      <% if (typeof encontrados !=='undefined' ) { %>
-        <% if (encontrados.length> 0) { %>
+            <% if (typeof encontrados !=='undefined' ) { %>
+        <% if (encontrados.length > 0) { %>
           <b>Resultados:</b>
           <% encontrados.forEach(function(m) { %>
             <div class="municipio-card">
-              <strong>
-                <%= m.municipi %>
-              </strong> - <b>Año:</b>
-              <%= m.any %>
-                <ul>
-                  <% Object.entries(m).forEach(function([k, v]) { %>
-                    <li><b>
-                        <%= k %>:
-                      </b>
-                      <%= v %>
-                    </li>
-                    <% }); %>
-                </ul>
+              <ul>
+                <li><b>Código municipio:</b> <%= m.codi_municipi %></li>
+                <li><b>Municipio:</b> <%= m.municipi %></li>
+                <li><b>Comarca:</b> <%= m.comarca %></li>
+                <li><b>Población:</b> <%= m.poblaci %></li>
+                <li><b>Generación residuos municipal:</b> <%= m.generaci_residus_municipal %></li>
+                <li><b>Kg/hab/día:</b> <%= m.kg_hab_dia %></li>
+                <li><b>Kg/hab/año:</b> <%= m.kg_hab_any %></li>
+              </ul>
             </div>
-            <% }); %>
-              <% } else { %>
-                <span style="color:red;">No se encontró ningún municipio o año.</span>
-                <% } %>
-                  <% } %>
+          <% }); %>
+        <% } else { %>
+          <span style="color:red;">No se encontró ningún municipio o año.</span>
+        <% } %>
+      <% } %>
     </div>
   </div>
 </body>

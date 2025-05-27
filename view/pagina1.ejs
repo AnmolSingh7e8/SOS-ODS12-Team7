@@ -4,14 +4,24 @@
   <meta charset="UTF-8">
   <title>ODS 12 - Inicio</title>
   <link rel="stylesheet" href="/style/inicioStyle.css">
-
 </head>
 <body>
+  <img src="/style/imgInicio2.jpg" alt="ODS 12" class="inicio-bg">
   <div class="inicio-container">
-    <img src="/imagenInicio.png" alt="ODS 12" class="inicio-img">
-    <form action="/info" method="get">
+    <form id="inicioForm" action="/info" method="get">
       <button class="btn-empezar" type="submit">Empieza ya</button>
     </form>
   </div>
+  <div class="fade-overlay" id="fadeOverlay"></div>
+  <script>
+    document.getElementById('inicioForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const overlay = document.getElementById('fadeOverlay');
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = '/info';
+      }, 700);
+    });
+  </script>
 </body>
 </html>

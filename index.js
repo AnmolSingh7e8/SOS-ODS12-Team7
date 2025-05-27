@@ -1,3 +1,4 @@
+import { render } from 'ejs';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -6,11 +7,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dbPath = path.join(__dirname, 'Db.json');
-
 const readData = () => {
     try {
-        const data = fs.readFileSync("./Db.json");
+        const data = fs.readFileSync("./db/Db.json");
         return JSON.parse(data || '{}');
     } catch (error) {
         console.error(error);
@@ -20,7 +19,7 @@ const readData = () => {
 
 const writeData = (data) => {
     try {
-        fs.writeFileSync("./Db.json", JSON.stringify(data, null, 2));
+        fs.writeFileSync("./db/Db.json", JSON.stringify(data, null, 2));
     } catch (error) {
         console.error(error);
     }
@@ -32,6 +31,8 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'view'));
 
+app.use('/dB', express.static(path.join(__dirname, 'dB')));
+
 app.use(express.json());
 app.use('/style', express.static(path.join(__dirname, 'style')));
 
@@ -42,6 +43,22 @@ app.get('/', (req, res) => {
         ods12: db.ods12 || {},
         compromisos: db.compromisos || []
     });
+});
+
+
+app.get('/graficos', (req, res) => {
+  const dataPath = path.join(__dirname, 'dB', 'Db.json');
+  fs.readFile(dataPath, 'utf-8', (err, jsonData) => {
+    if (err) {
+      return res.status(500).send('Error llegint les dades.');
+    }
+    const data = JSON.parse(jsonData);
+    res.render('graficos', { data });
+  });
+});
+
+app.get('/info', (req, res) => {
+  res.render('info');
 });
 
 // API: Obtener todo el contenido de Db.json
@@ -95,15 +112,20 @@ app.get('/buscador', (req, res) => {
 });
 
 app.get('/mapa', (req, res) => {
-    const dbMapaPath = path.join(__dirname, 'Db_mapa.json');
-    const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
-    res.render('mapa', { datos: Array.isArray(db) ? db : [db] });
+  const dbMapaPath = path.join(__dirname, 'dB', 'Db_mapa.json');
+  const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
+  res.render('mapa', { datos: db }); // <-- Renderiza la vista y pasa los datos
 });
 
-app.get('/api/datos', (req, res) => {
-    const dbMapaPath = path.join(__dirname, 'Db_mapa.json');
-    const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
-    res.json(Array.isArray(db) ? db : [db]);
+app.get('/datos', (req, res) => {
+    const dbMapaPath = path.join(__dirname, 'dB', 'Db_mapa.json');
+    try {
+        const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
+        res.json(Array.isArray(db) ? db : [db]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error leyendo los datos del mapa' });
+    }
 });
 
 app.listen(PORT, () => {

@@ -1,36 +1,136 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacte i Recursos - ODS 12</title>
-    <link rel="stylesheet" href="/style/indexStyle.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacte i Recursos - ODS 12</title>
+  <link rel="stylesheet" href="/style/indexStyle.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Contacte i Recursos ODS 12</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">Inici</a></li>
-            <li><a href="/info">Recerca </a></li>
-            <li><a href="/buscador">Buscador</a></li>
-            <li><a href="/mapa">Mapa</a></li>
-            <li><a href="#contacte">Contacte</a></li>
+  <header>
+    <h1>Contacte i Recursos ODS 12</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/">Inici</a></li>
+      <li><a href="/info">Investigació</a></li>
+      <li><a href="/buscador">Buscador</a></li>
+      <li><a href="/mapa">Mapa</a></li>
+      <li><a href="#contacte">Contacte</a></li>
+    </ul>
+  </nav>
 
+  <section id="graficos" class="grafico-container">
+    <h3>Gràfics de Residus</h3>
 
-        </ul>
-    </nav>
-    <section id="recursos">
-        <h3>Recursos sobre l'ODS 12</h3>
-        <ul>
-            <li><a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" target="_blank">ONU: Consum i producció responsables</a></li>
-            <li><a href="https://www.ods.cat/ods/12/" target="_blank">ODS 12 a Catalunya</a></li>
-            <li><a href="https://www.ecologistasenaccion.org/ods-12/" target="_blank">Ecologistes en Acció: ODS 12</a></li>
-        </ul>
-    </section>
-    <footer>
-        <p>Team 7</p>
-    </footer>
+    <div class="grafico-card">
+      <h4>Total Quantities of Different Waste Types</h4>
+      <canvas id="barChartWaste" width="600" height="300"></canvas>
+    </div>
+
+    <div class="grafico-card">
+      <h4>Waste Generation Trends Over Time</h4>
+      <canvas id="lineChartWaste" width="600" height="300"></canvas>
+    </div>
+
+    <div class="grafico-card">
+      <h4>Distribució de Kg/hab/any per Comarca (2023)</h4>
+      <div id="boxplotComarca" style="width:600px;height:300px;"></div>
+    </div>
+
+    <div class="grafico-card">
+      <h4>Distribució per Comarca i Municipi</h4>
+      <div id="treemapComarca" style="width:600px;height:400px;"></div>
+    </div>
+  </section>
+
+  <section id="recursos">
+    <h3>Recursos sobre l'ODS 12</h3>
+    <ul>
+      <li><a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" target="_blank">ONU: Consum i producció responsables</a></li>
+      <li><a href="https://www.ods.cat/ods/12/" target="_blank">ODS 12 a Catalunya</a></li>
+      <li><a href="https://www.ecologistasenaccion.org/ods-12/" target="_blank">Ecologistes en Acció: ODS 12</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Team 7</p>
+  </footer>
+
+  <script>
+    fetch('/dB/Db.json')
+      .then(r => r.json())
+      .then(data => {
+        const wasteColumns = ['paper_i_cartr', 'vidre', 'envasos_lleugers', 'mat_ria_org_nica', 'residus_voluminosos_fusta'];
+        const wasteLabels = ['Paper i cartró', 'Vidre', 'Envasos lleugers', 'Matèria orgànica', 'Residus voluminosos + fusta'];
+        const wasteSums = wasteColumns.map(col =>
+          data.reduce((sum, row) => sum + (parseFloat(row[col]) || 0), 0)
+        );
+
+        new Chart(document.getElementById('barChartWaste'), {
+          type: 'bar',
+          data: {
+            labels: wasteLabels,
+            datasets: [{
+              label: 'Total Quantitat (kg)',
+              data: wasteSums,
+              backgroundColor: ['skyblue', 'lightcoral', 'lightgreen', 'gold', 'plum']
+            }]
+          },
+          options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+
+        const years = [...new Set(data.map(row => row['any']))].sort((a, b) => parseInt(a) - parseInt(b));
+        const wastePerYear = years.map(year =>
+          data.filter(row => row['any'] == year)
+              .reduce((sum, row) => sum + (parseFloat(row['generaci_residus_municipal']) || 0), 0)
+        );
+
+        new Chart(document.getElementById('lineChartWaste'), {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [{
+              label: 'Total Residus (kg)',
+              data: wastePerYear,
+              borderColor: 'teal',
+              fill: false
+            }]
+          },
+          options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+
+        const df2023 = data.filter(row => row['any'] === '2023' && row['comarca'] && row['kg_hab_any']);
+        const comarques = [...new Set(df2023.map(row => row['comarca']))];
+        const boxData = comarques.map(comarca => ({
+          y: df2023.filter(row => row['comarca'] === comarca).map(row => parseFloat(row['kg_hab_any'])),
+          type: 'box',
+          name: comarca
+        }));
+
+        Plotly.newPlot('boxplotComarca', boxData, {
+          margin: { t: 30, b: 120 },
+          title: 'Distribució de Kg/hab/any per Comarca (2023)',
+          xaxis: { tickangle: -45 }
+        });
+
+        const treemapData = data.filter(row =>
+          row['any'] === '2023' && row['comarca'] && row['municipi'] && row['generaci_residus_municipal']
+        );
+
+        Plotly.newPlot('treemapComarca', [{
+          type: "treemap",
+          labels: treemapData.map(r => r['municipi']),
+          parents: treemapData.map(r => r['comarca']),
+          values: treemapData.map(r => parseFloat(r['generaci_residus_municipal'])),
+          textinfo: "label+value+percent parent"
+        }], {
+          title: 'Distribució per Comarca i Municipi (2023)'
+        });
+      })
+      .catch(error => console.error("Error carregant el JSON:", error));
+  </script>
 </body>
 </html>

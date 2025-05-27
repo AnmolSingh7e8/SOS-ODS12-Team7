@@ -60,6 +60,20 @@ section {
     box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
+.grafico-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.grafico-card {
+  margin-bottom: 3rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 h3 {
     color: #b8860b;
     margin-top: 0;
