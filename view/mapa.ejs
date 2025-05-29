@@ -11,16 +11,16 @@
 <body>
 
   <header>
-    <h1>Contacte i Recursos ODS 12</h1>
+    <h1>Recursos ODS 12</h1>
   </header>
 
   <nav>
     <ul>
-      <li><a href="/">Inici</a></li>
-      <li><a href="/info">Recerca</a></li>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/info">Investigación</a></li>
       <li><a href="/buscador">Buscador</a></li>
       <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#contacte">Contacte</a></li>
+      <li><a href="#conclusion">Conclusión</a></li>
     </ul>
   </nav>
 
@@ -28,89 +28,41 @@
     <h2>Mapa de Municipios (ODS 12)</h2>
     <div id="map"></div>
   </div>
+<script>
+  fetch('/api/mapa')
+    .then(res => res.json())
+    .then(data => {
+      // Si tus datos tienen lat/lon como número:
+      let municipios = data.filter(d => d.lat && d.lon);
 
-  <script>
-    const data = [
-  {"Municipi":"Barcelona","Generació Residus Municipal Totals":747995.93,"lat":41.38879,"lon":2.15899},
-  {"Municipi":"Girona","Generació Residus Municipal Totals":44038.92,"lat":41.9831,"lon":2.8249},
-  {"Municipi":"Lleida","Generació Residus Municipal Totals":63762.02,"lat":41.6167,"lon":0.6222},
-  {"Municipi":"Tarragona","Generació Residus Municipal Totals":61234.33,"lat":41.1167,"lon":1.25},
-  {"Municipi":"Sabadell","Generació Residus Municipal Totals":92276.69,"lat":41.5483,"lon":2.1075},
-  {"Municipi":"Terrassa","Generació Residus Municipal Totals":81599.65,"lat":41.5667,"lon":2.0167},
-  {"Municipi":"Badalona","Generació Residus Municipal Totals":95848.46,"lat":41.45,"lon":2.25},
-  {"Municipi":"Hospitalet de Llobregat","Generació Residus Municipal Totals":105143.24,"lat":41.3667,"lon":2.1167},
-  {"Municipi":"Reus","Generació Residus Municipal Totals":51570.62,"lat":41.15,"lon":1.1167},
-  {"Municipi":"Manresa","Generació Residus Municipal Totals":35017.89,"lat":41.7333,"lon":1.8333},
-  {"Municipi":"Mataró","Generació Residus Municipal Totals":57048.73,"lat":41.5333,"lon":2.45},
-  {"Municipi":"Granollers","Generació Residus Municipal Totals":25000.00,"lat":41.6,"lon":2.2833},
-  {"Municipi":"Vilanova i la Geltrú","Generació Residus Municipal Totals":33429.19,"lat":41.2167,"lon":1.7333},
-  {"Municipi":"Vilafranca del Penedès","Generació Residus Municipal Totals":20000.00,"lat":41.35,"lon":1.7},
-  {"Municipi":"Sant Cugat del Vallès","Generació Residus Municipal Totals":37901.35,"lat":41.4667,"lon":2.0833},
-  {"Municipi":"Rubí","Generació Residus Municipal Totals":32621.76,"lat":41.5,"lon":2.0333},
-  {"Municipi":"Cerdanyola del Vallès","Generació Residus Municipal Totals":14000.00,"lat":41.5,"lon":2.1333},
-  {"Municipi":"Mollet del Vallès","Generació Residus Municipal Totals":16000.00,"lat":41.55,"lon":2.2},
-  {"Municipi":"Castelldefels","Generació Residus Municipal Totals":34854.22,"lat":41.2833,"lon":1.9833},
-  {"Municipi":"El Prat de Llobregat","Generació Residus Municipal Totals":20000.00,"lat":41.3167,"lon":2.0833},
-  {"Municipi":"Cornellà de Llobregat","Generació Residus Municipal Totals":34194.71,"lat":41.35,"lon":2.0833},
-  {"Municipi":"Esplugues de Llobregat","Generació Residus Municipal Totals":13000.00,"lat":41.3667,"lon":2.0833},
-  {"Municipi":"Sant Boi de Llobregat","Generació Residus Municipal Totals":35836.55,"lat":41.35,"lon":2.05},
-  {"Municipi":"Santa Coloma de Gramenet","Generació Residus Municipal Totals":45412.47,"lat":41.45,"lon":2.2167},
-  {"Municipi":"Sant Adrià de Besòs","Generació Residus Municipal Totals":12000.00,"lat":41.4333,"lon":2.2333},
-  {"Municipi":"Vic","Generació Residus Municipal Totals":21000.00,"lat":41.9333,"lon":2.25},
-  {"Municipi":"Igualada","Generació Residus Municipal Totals":18000.00,"lat":41.5833,"lon":1.6167},
-  {"Municipi":"Blanes","Generació Residus Municipal Totals":17000.00,"lat":41.6833,"lon":2.8},
-  {"Municipi":"Figueres","Generació Residus Municipal Totals":15000.00,"lat":42.2667,"lon":2.9667},
-  {"Municipi":"Olot","Generació Residus Municipal Totals":14000.00,"lat":42.1833,"lon":2.5},
-  {"Municipi":"Ripoll","Generació Residus Municipal Totals":13000.00,"lat":42.2,"lon":2.2},
-  {"Municipi":"Berga","Generació Residus Municipal Totals":12000.00,"lat":42.1,"lon":1.85},
-  {"Municipi":"Solsona","Generació Residus Municipal Totals":11000.00,"lat":41.9833,"lon":1.5167},
-  {"Municipi":"Balaguer","Generació Residus Municipal Totals":10000.00,"lat":41.7833,"lon":0.8},
-  {"Municipi":"Cervera","Generació Residus Municipal Totals":9000.00,"lat":41.6667,"lon":1.2833},
-  {"Municipi":"Tàrrega","Generació Residus Municipal Totals":8000.00,"lat":41.65,"lon":1.15},
-  {"Municipi":"Mollerussa","Generació Residus Municipal Totals":7000.00,"lat":41.6333,"lon":0.9},
-  {"Municipi":"Amposta","Generació Residus Municipal Totals":6000.00,"lat":40.7167,"lon":0.5833},
-  {"Municipi":"Tortosa","Generació Residus Municipal Totals":5000.00,"lat":40.8,"lon":0.5},
-  {"Municipi":"Valls","Generació Residus Municipal Totals":4000.00,"lat":41.2833,"lon":1.25},
-  {"Municipi":"Cambrils","Generació Residus Municipal Totals":3000.00,"lat":41.0667,"lon":1.05},
-  {"Municipi":"Salou","Generació Residus Municipal Totals":2000.00,"lat":41.0833,"lon":1.1333},
-  {"Municipi":"Calafell","Generació Residus Municipal Totals":1000.00,"lat":41.2,"lon":1.5667},
-  {"Municipi":"Sitges","Generació Residus Municipal Totals":900.00,"lat":41.2333,"lon":1.8},
-  {"Municipi":"Sant Pere de Ribes","Generació Residus Municipal Totals":800.00,"lat":41.2667,"lon":1.7667},
-  {"Municipi":"Vilassar de Mar","Generació Residus Municipal Totals":700.00,"lat":41.5,"lon":2.3833},
-  {"Municipi":"Calella","Generació Residus Municipal Totals":600.00,"lat":41.6167,"lon":2.65},
-  {"Municipi":"Malgrat de Mar","Generació Residus Municipal Totals":500.00,"lat":41.65,"lon":2.7333},
-  {"Municipi":"Pineda de Mar","Generació Residus Municipal Totals":400.00,"lat":41.6333,"lon":2.6833},
-  {"Municipi":"Premià de Mar","Generació Residus Municipal Totals":300.00,"lat":41.4833,"lon":2.3667},
-  {"Municipi":"Sant Pol de Mar","Generació Residus Municipal Totals":200.00,"lat":41.6,"lon":2.6167},
-  {"Municipi":"Arenys de Mar","Generació Residus Municipal Totals":100.00,"lat":41.5833,"lon":2.55},
-  {"Municipi":"El Masnou","Generació Residus Municipal Totals":90.00,"lat":41.4833,"lon":2.3167},
-  {"Municipi":"Montgat","Generació Residus Municipal Totals":80.00,"lat":41.4667,"lon":2.3}
-];
+      if (!municipios.length) return;
 
-    const avgLat = data.reduce((sum, d) => sum + d.lat, 0) / data.length;
-    const avgLon = data.reduce((sum, d) => sum + d.lon, 0) / data.length;
+      const avgLat = municipios.reduce((sum, d) => sum + d.lat, 0) / municipios.length;
+      const avgLon = municipios.reduce((sum, d) => sum + d.lon, 0) / municipios.length;
 
-    const map = L.map('map').setView([avgLat, avgLon], 9);
+      const map = L.map('map').setView([avgLat, avgLon], 9);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap, &copy; CartoDB',
-    }).addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap, &copy; CartoDB',
+      }).addTo(map);
 
-    data.forEach((item) => {
-      const radius = item["Generació Residus Municipal Totals"] / 50000;
-      L.circleMarker([item.lat, item.lon], {
-        radius: radius,
-        color: 'blue',
-        fillColor: 'blue',
-        fillOpacity: 0.6
-      }).bindPopup(
-        `<strong>${item.Municipi}</strong><br/>${item["Generació Residus Municipal Totals"].toLocaleString()} kg`
-      ).addTo(map);
+      municipios.forEach((item) => {
+        const radius = item["Generació Residus Municipal Totals"] / 10000 + 4;
+        L.circleMarker([item.lat, item.lon], {
+          radius: radius,
+          color: 'blue',
+          fillColor: 'blue',
+          fillOpacity: 0.6
+        }).bindPopup(
+          `<strong>${item.Municipi}</strong><br/>${item["Generació Residus Municipal Totals"].toLocaleString()} kg`
+        ).addTo(map);
+      });
     });
-  </script>
+</script>
+
 
   <footer>
-    <p>Team 7</p>
+    <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
   </footer>
 </body>
 </html>

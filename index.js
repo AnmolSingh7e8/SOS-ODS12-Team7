@@ -7,6 +7,18 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const app = express();
+const PORT = 3000;
+
+// Configuración de vistas y middlewares
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'view'));
+app.use('/dB', express.static(path.join(__dirname, 'dB')));
+app.use(express.json());
+app.use('/style', express.static(path.join(__dirname, 'style')));
+
+// FUNCIONES UTILES
+
 const readData = () => {
     try {
         const data = fs.readFileSync("./db/Db.json");
@@ -25,18 +37,9 @@ const writeData = (data) => {
     }
 };
 
-const app = express();
-const PORT = 3000;
+// RUTAS PRINCIPALES (VISTAS)
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'view'));
-
-app.use('/dB', express.static(path.join(__dirname, 'dB')));
-
-app.use(express.json());
-app.use('/style', express.static(path.join(__dirname, 'style')));
-
-// Ruta principal: muestra la web con datos de Db.json
+// Página principal
 app.get('/', (req, res) => {
     const db = readData();
     res.render('pagina1', {
@@ -45,30 +48,51 @@ app.get('/', (req, res) => {
     });
 });
 
-
+// Página de gráficos
 app.get('/graficos', (req, res) => {
-  const dataPath = path.join(__dirname, 'dB', 'Db.json');
-  fs.readFile(dataPath, 'utf-8', (err, jsonData) => {
-    if (err) {
-      return res.status(500).send('Error llegint les dades.');
-    }
-    const data = JSON.parse(jsonData);
-    res.render('graficos', { data });
-  });
+    const dataPath = path.join(__dirname, 'dB', 'Db.json');
+    fs.readFile(dataPath, 'utf-8', (err, jsonData) => {
+        if (err) {
+            return res.status(500).send('Error llegint les dades.');
+        }
+        const data = JSON.parse(jsonData);
+        res.render('graficos', { data });
+    });
 });
 
+// Página de información
 app.get('/info', (req, res) => {
-  res.render('info');
+    res.render('info');
 });
+
+// Página del mapa
+app.get('/mapa', (req, res) => {
+    res.render('mapa');
+});
+
+// Página del buscador
+app.get('/buscador', (req, res) => {
+    const db = readData();
+    let encontrados = [];
+    const municipio = req.query.municipio ? req.query.municipio.trim().toLowerCase() : '';
+    const anyo = req.query.anyo ? req.query.anyo.trim() : '';
+    if (municipio || anyo) {
+        encontrados = (Array.isArray(db) ? db : [db]).filter(item => {
+            const matchMunicipio = municipio ? (item.municipi && item.municipi.toLowerCase().includes(municipio)) : true;
+            const matchAnyo = anyo ? (item.any && item.any.toString() === anyo) : true;
+            return matchMunicipio && matchAnyo;
+        });
+    }
+    res.render('buscador', { encontrados });
+});
+
+
+// RUTAS API (CONSULTAS)
 
 // API: Obtener todo el contenido de Db.json
 app.get('/api/db', (req, res) => {
     const db = readData();
     res.json(db);
-});
-
-app.get('/info', (req, res) => {
-  res.render('info');
 });
 
 // API: Obtener solo los compromisos
@@ -94,29 +118,14 @@ app.get('/api/compromisos/:index', (req, res) => {
     }
 });
 
-
-// Ruta para el buscador de compromisos por índice
-app.get('/buscador', (req, res) => {
-    const db = readData();
-    let encontrados = [];
-    const municipio = req.query.municipio ? req.query.municipio.trim().toLowerCase() : '';
-    const anyo = req.query.anyo ? req.query.anyo.trim() : '';
-    if (municipio || anyo) {
-        encontrados = (Array.isArray(db) ? db : [db]).filter(item => {
-            const matchMunicipio = municipio ? (item.municipi && item.municipi.toLowerCase().includes(municipio)) : true;
-            const matchAnyo = anyo ? (item.any && item.any.toString() === anyo) : true;
-            return matchMunicipio && matchAnyo;
-        });
-    }
-    res.render('buscador', { encontrados });
+// API: Obtener datos del mapa
+app.get('/api/mapa', (req, res) => {
+    const dbMapaPath = path.join(__dirname, 'dB', 'Db_mapa.json');
+    const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
+    res.json(db);
 });
 
-app.get('/mapa', (req, res) => {
-  const dbMapaPath = path.join(__dirname, 'dB', 'Db_mapa.json');
-  const db = JSON.parse(fs.readFileSync(dbMapaPath, 'utf8'));
-  res.render('mapa', { datos: db }); // <-- Renderiza la vista y pasa los datos
-});
-
+// API: Obtener datos del mapa (alternativa)
 app.get('/datos', (req, res) => {
     const dbMapaPath = path.join(__dirname, 'dB', 'Db_mapa.json');
     try {
@@ -127,6 +136,9 @@ app.get('/datos', (req, res) => {
         res.status(500).json({ error: 'Error leyendo los datos del mapa' });
     }
 });
+
+
+// INICIAR SERVIDOR
 
 app.listen(PORT, () => {
     console.log(`Servidor API escoltant a http://localhost:${PORT}`);

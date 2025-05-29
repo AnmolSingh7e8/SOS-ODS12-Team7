@@ -1,68 +1,112 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacte i Recursos - ODS 12</title>
-  <link rel="stylesheet" href="/style/indexStyle.css" />
+  <title>Recursos - ODS 12</title>
+  <link rel="stylesheet" href="/style/infoStyle.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
+
 <body>
   <header>
-    <h1>Contacte i Recursos ODS 12</h1>
+    <h1>Recursos ODS 12</h1>
   </header>
   <nav>
     <ul>
-      <li><a href="/">Inici</a></li>
-      <li><a href="/info">Investigació</a></li>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/info">Investigación</a></li>
       <li><a href="/buscador">Buscador</a></li>
       <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#contacte">Contacte</a></li>
+      <li><a href="#conclusion">Conclusión</a></li>
     </ul>
   </nav>
 
-  <section id="graficos" class="grafico-container">
-    <h3>Gràfics de Residus</h3>
+  <div class="main-content">
+    <section id="ods-info" class="ods-info">
+      <h2>ODS Elegido</h2>
+            <div class="ods-flex">
+        <div class="ods-text">
+          <p><strong>ODS 12: Producción y consumo responsables</strong></p>
+          <p>
+            Este objetivo busca producir más y mejores bienes utilizando menos recursos. El enfoque del proyecto ha sido principalmente el reciclaje de recursos y la cantidad producida.
+          </p>
+        </div>
+        <img src="/style/src/ODS12.jpg" alt="ODS 12" class="ods-image">
+      </div>
+      <h3>Indicador utilizado</h3>
+      <ul>
+        <li>
+          <strong>Indicador 12.5.1:</strong> Tasa nacional de reciclaje, toneladas de material reciclado.<br>
+          Este es el indicador principal abordado en el análisis.
+        </li>
+        <li>
+          Además, se mencionan otros indicadores secundarios relacionados:
+          <ul>
+            <li><strong>12.4.2:</strong> Cantidad de residuos peligrosos generados por cápita y su tratamiento.</li>
+            <li><strong>12.3.1:</strong> Pérdidas de alimentos (indirectamente si hay residuos alimentarios en los
+              datos).</li>
+            <li><strong>12.1.1:</strong> Políticas y planes de acción relacionados con producción/consumo responsables.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Datasets utilizados</h3>
+      <ul>
+        <li>
+          <strong>Estadísticas de residuos municipales (2010-2023):</strong> Datos sobre la generación de residuos
+          municipales por municipio y comarca, incluyendo tipos de residuos y cantidades.
+        </li>
+        <li>
+          <strong>Datos de población por municipio (2023):</strong> Información sobre la población de cada municipio para
+          calcular la generación de residuos per cápita.
+        </li>
+    </section>
 
-    <div class="grafico-card">
-      <h4>Total Quantities of Different Waste Types</h4>
-      <canvas id="barChartWaste" width="600" height="300"></canvas>
-    </div>
+        </section>
 
-    <div class="grafico-card">
-      <h4>Waste Generation Trends Over Time</h4>
-      <canvas id="lineChartWaste" width="600" height="300"></canvas>
-    </div>
-
-    <div class="grafico-card">
-      <h4>Distribució de Kg/hab/any per Comarca (2023)</h4>
-      <div id="boxplotComarca" style="width:600px;height:300px;"></div>
-    </div>
-
-    <div class="grafico-card">
-      <h4>Distribució per Comarca i Municipi</h4>
-      <div id="treemapComarca" style="width:600px;height:400px;"></div>
-    </div>
-  </section>
-
-  <section id="recursos">
-    <h3>Recursos sobre l'ODS 12</h3>
-    <ul>
-      <li><a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" target="_blank">ONU: Consum i producció responsables</a></li>
-      <li><a href="https://www.ods.cat/ods/12/" target="_blank">ODS 12 a Catalunya</a></li>
-      <li><a href="https://www.ecologistasenaccion.org/ods-12/" target="_blank">Ecologistes en Acció: ODS 12</a></li>
-    </ul>
-  </section>
+    <!-- GRÁFICOS FUERA DE CARTA, LIBRES Y EN TABLA 2x2 -->
+    <section id="graficos" class="grafico-container">
+      <div class="titulo-separador">
+        <h3>Gráficos de Residuos</h3>
+      </div>
+      <div class="graficos-table">
+        <div>
+          <h4>Cantidad total de diferentes tipos de residuos</h4>
+          <p>¿Cuáles son los tipos de residuos más generales?</p>
+          <canvas id="barChartWaste"></canvas>
+          <p>Como podemos observar en la visualización el papel y el cartón, el vidrio, los envases ligeros, la materia orgánica y los residuos voluminosos (+ madera) son los residuos más generales. </p>
+        </div>
+        <div>
+          <p>Ha habido una evolución en la cantidad de residuos generados a lo largo del tiempo?</p>
+          <h4>Generación de residuos a lo largo del tiempo</h4>
+          <canvas id="lineChartWaste"></canvas>
+        </div>
+        <div>
+          <h4>Distribución de Kg/hab/año por Comarca (2023)</h4>
+          <div id="boxplotComarca"></div>
+        </div>
+        <div>
+          <h4>Top 20 Municipios con más Generación de Residuos</h4>
+          <p>¿Hay alguna diferencia significativa en la cantidad de residuos generados entre diferentes zonas geográficas o poblaciones? </p>
+          <canvas id="top20MunicipisChart"></canvas>
+          <p>Las zonas con más residuos generados son las grandes ciudades, demostrando que hay una diferencia notable a comparación de poblaciones más pequeñas.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <footer>
-    <p>Team 7</p>
+    <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
   </footer>
 
   <script>
     fetch('/dB/Db.json')
       .then(r => r.json())
       .then(data => {
+        // Gráfico de barras de tipos de residuos
         const wasteColumns = ['paper_i_cartr', 'vidre', 'envasos_lleugers', 'mat_ria_org_nica', 'residus_voluminosos_fusta'];
         const wasteLabels = ['Paper i cartró', 'Vidre', 'Envasos lleugers', 'Matèria orgànica', 'Residus voluminosos + fusta'];
         const wasteSums = wasteColumns.map(col =>
@@ -82,10 +126,11 @@
           options: { responsive: true, plugins: { legend: { display: false } } }
         });
 
+        // Gráfico de línea de residuos por año
         const years = [...new Set(data.map(row => row['any']))].sort((a, b) => parseInt(a) - parseInt(b));
         const wastePerYear = years.map(year =>
           data.filter(row => row['any'] == year)
-              .reduce((sum, row) => sum + (parseFloat(row['generaci_residus_municipal']) || 0), 0)
+            .reduce((sum, row) => sum + (parseFloat(row['generaci_residus_municipal']) || 0), 0)
         );
 
         new Chart(document.getElementById('lineChartWaste'), {
@@ -102,6 +147,7 @@
           options: { responsive: true, plugins: { legend: { display: false } } }
         });
 
+        // Boxplot por comarca
         const df2023 = data.filter(row => row['any'] === '2023' && row['comarca'] && row['kg_hab_any']);
         const comarques = [...new Set(df2023.map(row => row['comarca']))];
         const boxData = comarques.map(comarca => ({
@@ -116,21 +162,47 @@
           xaxis: { tickangle: -45 }
         });
 
-        const treemapData = data.filter(row =>
-          row['any'] === '2023' && row['comarca'] && row['municipi'] && row['generaci_residus_municipal']
-        );
+        // Top 20 Municipis amb més generació de residus (gráfico de barras horizontal)
+        const latestYear = Math.max(...data.map(row => parseInt(row['any'])).filter(Boolean));
+        const dfLatestYear = data.filter(row => parseInt(row['any']) === latestYear && row['municipi'] && row['generaci_residus_municipal']);
+        const municipiTotals = {};
 
-        Plotly.newPlot('treemapComarca', [{
-          type: "treemap",
-          labels: treemapData.map(r => r['municipi']),
-          parents: treemapData.map(r => r['comarca']),
-          values: treemapData.map(r => parseFloat(r['generaci_residus_municipal'])),
-          textinfo: "label+value+percent parent"
-        }], {
-          title: 'Distribució per Comarca i Municipi (2023)'
+        dfLatestYear.forEach(row => {
+          const municipi = row['municipi'];
+          const residus = parseFloat(row['generaci_residus_municipal']) || 0;
+          if (municipiTotals[municipi]) {
+            municipiTotals[municipi] += residus;
+          } else {
+            municipiTotals[municipi] = residus;
+          }
+        });
+
+        const top20 = Object.entries(municipiTotals)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 20);
+
+        new Chart(document.getElementById('top20MunicipisChart'), {
+          type: 'bar',
+          data: {
+            labels: top20.map(item => item[0]),
+            datasets: [{
+              label: 'Generació Total de Residus (kg)',
+              data: top20.map(item => item[1]),
+              backgroundColor: 'rgba(34, 139, 34, 0.7)'
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { ticks: { font: { size: 11 } } }
+            }
+          }
         });
       })
       .catch(error => console.error("Error carregant el JSON:", error));
   </script>
 </body>
+
 </html>

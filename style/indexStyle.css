@@ -60,18 +60,67 @@ section {
     box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
+/* --- GRÁFICOS LIBRES, ESTILO TABLA 2x2 --- */
 .grafico-container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem;
+  max-width: 1300px;
+  margin: 2rem auto 2rem auto;
+  padding: 2rem 2rem 2rem 2rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.graficos-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 3rem;
+  width: 100%;
+  justify-items: center;
 }
 
 .grafico-card {
-  margin-bottom: 3rem;
   background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 14px;
+  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+  box-shadow: 0 2px 12px rgba(191,139,46,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  width: 520px;
+  max-width: 95vw;
+  transition: box-shadow 0.2s;
+}
+
+.grafico-card:hover {
+  box-shadow: 0 4px 24px rgba(191,139,46,0.16);
+}
+
+.grafico-card h4 {
+  font-size: 1.13rem;
+  color: #b8860b;
+  margin-bottom: 0.7em;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Tamaño uniforme para todos los gráficos */
+.grafico-card canvas,
+.grafico-card .plotly-graph-div,
+.grafico-card > div[id^="boxplot"] {
+  width: 100% !important;
+  height: 340px !important;
+  max-width: 480px;
+  margin: 0 auto;
+  display: block;
+  background: #fff;
+  border-radius: 10px;
 }
 
 h3 {
@@ -92,4 +141,54 @@ footer {
     margin-top: 2rem;
     font-size: 1rem;
     letter-spacing: 0.5px;
+}
+
+#boxplotComarca {
+  width: 100%;
+  max-width: 480px;
+  height: 340px;
+  margin: auto;
+}
+
+.ods-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.ods-text {
+  flex: 1 1 0;
+}
+
+.ods-image {
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Responsive para pantallas medianas y pequeñas */
+@media (max-width: 1100px) {
+  .graficos-table {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .grafico-card {
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .grafico-card canvas,
+  .grafico-card .plotly-graph-div,
+  .grafico-card > div[id^="boxplot"] {
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .grafico-container {
+    padding: 1rem 0.2rem;
+  }
+  .grafico-card {
+    padding: 0.7rem 0.2rem 1rem 0.2rem;
+  }
 }
