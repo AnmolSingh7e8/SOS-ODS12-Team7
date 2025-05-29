@@ -32,6 +32,22 @@ h2 {
   font-size: 1.3rem;
 }
 
+h3 {
+  color: #b8860b;
+  margin-top: 0;
+}
+
+.titulo-separador {
+  width: 100vw;
+  background: linear-gradient(to right, #fff3d0, #ffe9b3);
+  border-top: 3px solid #bf8b2e;
+  border-bottom: 3px solid #bf8b2e;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(191, 139, 46, 0.1);
+}
+
 nav {
   background: #fffbe6;
   padding: 0.5rem 0;
@@ -67,12 +83,31 @@ section {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12); /* Sombra más visible pero fondo sólido */
 }
 
+h1 {
+  font-size: 25px;
+  text-align: center;
+  color: white;
+}
+
 h2 {
   margin-bottom: 1rem;
   font-size: 25px;
   text-align: center;
+  font-weight: bold;
   color: #bf8b2e;
 }
+
+h3 {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: #bf8b2e;
+}
+
+.imagen-recogida {
+  padding-left: 250px;
+  width: 800px;
+}	
 
 #particles-js {
   position: fixed;
