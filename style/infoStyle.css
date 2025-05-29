@@ -142,11 +142,15 @@ section {
 }
 
 .ods-image {
-  max-width: 200px;
+  max-width: 180px;
   width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.espacio{
+  padding-top: 50px;
 }
 
 /* Gráficos */

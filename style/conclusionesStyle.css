@@ -59,12 +59,19 @@ nav a:hover {
 }
 
 section {
-  background: #fff;
+  background: #fff; /* Blanco sólido */
   margin: 2rem auto;
   padding: 1.5rem 2rem;
   max-width: 1100px;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12); /* Sombra más visible pero fondo sólido */
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 25px;
+  text-align: center;
+  color: #bf8b2e;
 }
 
 #particles-js {
@@ -73,8 +80,13 @@ section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: -1; /* Ahora siempre queda detrás */
   pointer-events: none;
+}
+
+body > *:not(#particles-js) {
+  position: relative;
+  z-index: 1;
 }
 
 footer {
