@@ -11,8 +11,9 @@
 </head>
 
 <body>
+  <div id="particles-js"></div>
   <header>
-    <h1>Recursos ODS 12</h1>
+    <h1>Investigación ODS 12</h1>
   </header>
   <nav>
     <ul>
@@ -20,18 +21,23 @@
       <li><a href="/info">Investigación</a></li>
       <li><a href="/buscador">Buscador</a></li>
       <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#conclusion">Conclusión</a></li>
+      <li><a href="/conclusiones">Conclusión</a></li>
     </ul>
   </nav>
 
-  <div class="main-content">
+  <div class="ods-main-sections">
     <section id="ods-info" class="ods-info">
       <h2>ODS Elegido</h2>
-            <div class="ods-flex">
+      <div class="ods-flex">
         <div class="ods-text">
           <p><strong>ODS 12: Producción y consumo responsables</strong></p>
           <p>
-            Este objetivo busca producir más y mejores bienes utilizando menos recursos. El enfoque del proyecto ha sido principalmente el reciclaje de recursos y la cantidad producida.
+          <p>
+            ODS 12 busca producir más y mejores bienes utilizando menos recursos, promoviendo la eficiencia y <br> la
+            reducción de residuos a través del reciclaje y la reutilización. El objetivo es fomentar patrones de <br> consumo
+            y producción sostenibles. El enfoque del proyecto ha sido principalmente el reciclaje de<br> recursos y la
+            cantidad producida, analizando cómo una buena gestión de residuos contribuye a<br> la sostenibilidad.
+          </p>
           </p>
         </div>
         <img src="/style/src/ODS12.jpg" alt="ODS 12" class="ods-image">
@@ -56,52 +62,255 @@
       <h3>Datasets utilizados</h3>
       <ul>
         <li>
-          <strong>Estadísticas de residuos municipales (2010-2023):</strong> Datos sobre la generación de residuos
-          municipales por municipio y comarca, incluyendo tipos de residuos y cantidades.
+          <strong>Estadísticas de residuos municipales: </strong>
+          <a href="https://analisi.transparenciacatalunya.cat/es/Medi-Ambient/Estad-stiques-de-residus-municipals/69zu-w48s/about_data"
+            target="_blank">
+            Ver dataset original
+          </a>
+          El dataset recoge las estadísticas de residuos municipales
+          de Catalunya. Concretamente, incorpora la cantidad de recogida selectiva por las diferentes fracciones,
+          los totales de recogida selectiva en términos
+          absolutos y per cápita, y la cantidad de la fracción resta por destino, más los totales de la fracción
+          permanece también en términos absolutos y por cápita.
         </li>
         <li>
-          <strong>Datos de población por municipio (2023):</strong> Información sobre la población de cada municipio para
-          calcular la generación de residuos per cápita.
+          <strong>Datos de hábitos de consumo y compra: </strong>
+          <a href="https://www.diba.cat/es/web/comerc/encuesta-habitos-de-consumo-y-compra" target="_blank">
+            Ver dataset original
+          </a>
+          El dataset está formado a base de unas encuestas sobre los Hábitos de Consumo y Compra analizando cada
+          dos años cómo compran los hogares en la provincia de Barcelona. Ofrece datos sobre preferencias,
+          frecuencia y canales de compra para apoyar políticas públicas locales.
         </li>
+      </ul>
     </section>
+  </div>
 
-        </section>
+  <section class="ods-table-section">
+    <h3 class="ods-table-title">Relación con la economía circular y ODS</h3>
+    <div class="ods-table-container">
+      <table class="ods-table">
+        <thead>
+          <tr>
+            <th>Ámbito de acción</th>
+            <th>Relación con la economía circular</th>
+            <th>Indicador medible con datos de este ODS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gestión de residuos</td>
+            <td>Fomentar la reutilización, reparación y reciclaje de materiales para reducir residuos en vertederos.
+            </td>
+            <td>Tasa nacional de reciclaje (Indicador 12.5.1)</td>
+          </tr>
+          <tr>
+            <td>Producción sostenible</td>
+            <td>Implementar procesos que utilicen menos recursos, generen menos residuos y diseñen productos duraderos.
+            </td>
+            <td>Huella material per cápita (Indicador 12.2.2)</td>
+          </tr>
+          <tr>
+            <td>Consumo responsable</td>
+            <td>Promover hábitos de compra sostenibles y reducir el desperdicio.</td>
+            <td>Residuos per cápita (relacionado, pero no indicador ODS directo)</td>
+          </tr>
+          <tr>
+            <td>Uso eficiente de los recursos naturales</td>
+            <td>Minimizar la extracción de recursos naturales y optimizar su aprovechamiento.</td>
+            <td>Consumo de agua per cápita (Indicador 6.4.1 / 6.4.2)</td>
+          </tr>
+          <tr>
+            <td>Gestión de sustancias químicas y residuos peligrosos</td>
+            <td>Reducir la producción de sustancias nocivas y gestionar residuos peligrosos de manera segura.</td>
+            <td>Cantidad de residuos peligrosos per cápita (Indicador 12.4.2, parte A)</td>
+          </tr>
+          <tr>
+            <td>Compras públicas sostenibles</td>
+            <td>Utilizar la demanda pública para impulsar productos y servicios sostenibles.</td>
+            <td>Proporción de países con políticas de contratación pública sostenible (Indicador 12.7.1)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-    <!-- GRÁFICOS FUERA DE CARTA, LIBRES Y EN TABLA 2x2 -->
-    <section id="graficos" class="grafico-container">
-      <div class="titulo-separador">
-        <h3>Gráficos de Residuos</h3>
+  <!-- GRÁFICOS FUERA DE CARTA, LIBRES Y EN TABLA 2x2 -->
+  <section id="graficos" class="grafico-container">
+    <div class="titulo-separador">
+      <h3>Gráficos de Residuos</h3>
+    </div>
+    <div class="graficos-table">
+      <div>
+        <h4>Cantidad total de diferentes tipos de residuos</h4>
+        <p>¿Cuáles son los tipos de residuos más generales?</p>
+        <canvas id="barChartWaste"></canvas>
+        <p>Como podemos observar en la visualización el papel y el cartón, el vidrio, los envases ligeros, la materia
+          orgánica y los residuos voluminosos (+ madera) son los residuos más generales. </p>
       </div>
-      <div class="graficos-table">
-        <div>
-          <h4>Cantidad total de diferentes tipos de residuos</h4>
-          <p>¿Cuáles son los tipos de residuos más generales?</p>
-          <canvas id="barChartWaste"></canvas>
-          <p>Como podemos observar en la visualización el papel y el cartón, el vidrio, los envases ligeros, la materia orgánica y los residuos voluminosos (+ madera) son los residuos más generales. </p>
-        </div>
-        <div>
-          <p>Ha habido una evolución en la cantidad de residuos generados a lo largo del tiempo?</p>
-          <h4>Generación de residuos a lo largo del tiempo</h4>
-          <canvas id="lineChartWaste"></canvas>
-        </div>
-        <div>
-          <h4>Distribución de Kg/hab/año por Comarca (2023)</h4>
-          <div id="boxplotComarca"></div>
-        </div>
-        <div>
-          <h4>Top 20 Municipios con más Generación de Residuos</h4>
-          <p>¿Hay alguna diferencia significativa en la cantidad de residuos generados entre diferentes zonas geográficas o poblaciones? </p>
-          <canvas id="top20MunicipisChart"></canvas>
-          <p>Las zonas con más residuos generados son las grandes ciudades, demostrando que hay una diferencia notable a comparación de poblaciones más pequeñas.</p>
-        </div>
+      <div>
+        <h4>Generación de residuos a lo largo del tiempo</h4>
+        <p>Ha habido una evolución en la cantidad de residuos generados a lo largo del tiempo?</p>
+        <canvas id="lineChartWaste"></canvas>
+        <p>
+          A lo largo de estos últimos años se pueden observar tres grandes cambios en la generación de residuos:<br><br>
+          <strong>2000-2007:</strong> Durante estos años la cantidad de residuos notó un crecimiento constante en su
+          generación de residuos, llegando a su pico máximo en 2007.<br><br>
+          <strong>2008-2013:</strong> En este año la generación de residuos disminuyó de manera desmesurada en donde
+          seguramente se asocia con la crisis económica global que hubo. En donde la actividad económica disminuyó, es
+          decir, menos generación de residuos.<br><br>
+          <strong>2014-actualidad (2025):</strong> A partir de 2013 la generación vuelve a aumentar pero no a los
+          niveles de años anteriores. Actualmente, parece que está volviendo a bajar, pero a pasos más lentos y
+          pequeños.
+        </p>
       </div>
-    </section>
+      <div>
+        <h4>Top 20 Municipios con más Generación de Residuos</h4>
+        <p>¿Hay alguna diferencia significativa en la cantidad de residuos generados entre diferentes zonas geográficas
+          o poblaciones? </p>
+        <canvas id="top20MunicipisChart"></canvas>
+        <p>Las zonas con
+          más residuos generados son las grandes ciudades, demostrando que hay una diferencia notable a
+          comparación de poblaciones más pequeñas.</p>
+      </div>
+      <div>
+        <h4>Distribución de Kg/hab/año por Comarca (2023)</h4>
+        <div id="boxplotComarca"></div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <!-- NUEVO APARTADO: GRÁFICOS DE COMPRAS -->
+  <section id="graficos-compras" class="grafico-container">
+    <div class="titulo-separador">
+      <h3>Gráficos de Compras y preferencias sobre los productos de sostenibles</h3>
+    </div>
+    <div class="graficos-table">
+      <div>
+        <h4>Canal de compra preferido según municipio</h4>
+        <p>¿En qué canal compran más los hogares según el municipio?</p>
+        <canvas id="barChartMunicipios"></canvas>
+        <p>Este gráfico muestra la preferencia de canal de compra en diferentes municipios.</p>
+      </div>
+      <div>
+        <h4>Preferencia por productos sostenibles</h4>
+        <p>¿Qué porcentaje de consumidores prefiere productos sostenibles?</p>
+        <canvas id="pieChartSostenibles"></canvas>
+        <p>Se observa la proporción de consumidores que priorizan productos convencionales frente a los sostenibles.</p>
+      </div>
+      <div>
+        <h4>Motivos para elegir productos sostenibles</h4>
+        <p>¿Cuáles son las razones principales por las que los consumidores eligen productos sostenibles?</p>
+        <canvas id="barChartMotivos"></canvas>
+        <p>Este gráfico muestra los motivos más frecuentes para preferir productos sostenibles.</p>
+      </div>
+      <div>
+        <h4>Evolución del interés en sostenibilidad</h4>
+        <p>¿Cómo ha cambiado el interés por la sostenibilidad en los últimos años?</p>
+        <canvas id="lineChartInteres"></canvas>
+        <p>Se observa la tendencia creciente en el interés por la sostenibilidad entre los consumidores.</p>
+      </div>
+    </div>
+  </section>
   </div>
 
   <footer>
     <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
+    <p>Instituto Tecnológico de Barcelona</p>
   </footer>
 
+  <script>
+    // Gráfico de barras: Frecuencia de compra por canal
+    // Gráfico de barras agrupadas: Canal de compra preferido según municipio
+    const municipios = ['Barcelona', 'Sabadell', 'Terrassa'];
+    const canalesMunicipio = ['Supermercado', 'Mercado local', 'Tienda online', 'Pequeño comercio'];
+    const datosMunicipios = [
+      [65, 15, 12, 8], // Barcelona
+      [55, 25, 10, 10], // Sabadell
+      [50, 30, 12, 8]   // Terrassa
+    ];
+
+    const datasetsMunicipios = canalesMunicipio.map((canal, i) => ({
+      label: canal,
+      data: datosMunicipios.map(m => m[i]),
+      backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2'][i]
+    }));
+
+    new Chart(document.getElementById('barChartMunicipios'), {
+      type: 'bar',
+      data: {
+        labels: municipios,
+        datasets: datasetsMunicipios
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'top' } },
+        scales: { x: { stacked: false }, y: { beginAtZero: true } }
+      }
+    });
+
+    // Gráfico circular: Preferencia por productos sostenibles
+    const preferencias = ['Prefiere convencionales', 'Prefiere sostenibles'];
+    const porcentaje = [68, 32]; // Datos de ejemplo
+
+    new Chart(document.getElementById('pieChartSostenibles'), {
+      type: 'pie',
+      data: {
+        labels: preferencias,
+        datasets: [{
+          data: porcentaje,
+          backgroundColor: ['#bab0ab', '#59a14f']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    // Gráfico de barras: Motivos para elegir productos sostenibles
+const motivos = ['Cuidado ambiental', 'Salud', 'Calidad', 'Precio', 'Tendencia'];
+const porcentajeMotivos = [45, 25, 15, 10, 5];
+
+new Chart(document.getElementById('barChartMotivos'), {
+  type: 'bar',
+  data: {
+    labels: motivos,
+    datasets: [{
+      label: 'Porcentaje (%)',
+      data: porcentajeMotivos,
+      backgroundColor: ['#59a14f', '#4e79a7', '#f28e2b', '#e15759', '#bab0ab']
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true } }
+  }
+});
+
+// Gráfico de líneas: Evolución del interés en sostenibilidad
+const anios = ['2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+const interes = [30, 35, 40, 50, 60, 68, 75];
+
+new Chart(document.getElementById('lineChartInteres'), {
+  type: 'line',
+  data: {
+    labels: anios,
+    datasets: [{
+      label: 'Interés (%)',
+      data: interes,
+      borderColor: '#4e79a7',
+      backgroundColor: 'rgba(76, 175, 80, 0.2)',
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true } }
+  }
+});
+  </script>
   <script>
     fetch('/dB/Db.json')
       .then(r => r.json())
@@ -202,6 +411,10 @@
         });
       })
       .catch(error => console.error("Error carregant el JSON:", error));
+  </script>
+  <script src="/particulas/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', '/particulas/particlesjs-config.json');
   </script>
 </body>
 

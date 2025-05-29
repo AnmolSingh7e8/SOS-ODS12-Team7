@@ -16,6 +16,7 @@ app.set('views', path.join(__dirname, 'view'));
 app.use('/dB', express.static(path.join(__dirname, 'dB')));
 app.use(express.json());
 app.use('/style', express.static(path.join(__dirname, 'style')));
+app.use('/particulas', express.static(path.join(__dirname, 'particulas')));
 
 // FUNCIONES UTILES
 
@@ -70,12 +71,28 @@ app.get('/mapa', (req, res) => {
     res.render('mapa');
 });
 
+app.get('/conclusiones', (req, res) => {
+    const db = readData();
+    res.render('conclusiones', {
+        ods12: db.ods12 || {},
+        compromisos: db.compromisos || []
+    });
+});
+
 // Página del buscador
 app.get('/buscador', (req, res) => {
     const db = readData();
     let encontrados = [];
     const municipio = req.query.municipio ? req.query.municipio.trim().toLowerCase() : '';
     const anyo = req.query.anyo ? req.query.anyo.trim() : '';
+
+    // Obtener años únicos
+    const yearsSet = new Set();
+    (Array.isArray(db) ? db : [db]).forEach(item => {
+        if (item.any) yearsSet.add(item.any);
+    });
+    const years = Array.from(yearsSet).sort();
+
     if (municipio || anyo) {
         encontrados = (Array.isArray(db) ? db : [db]).filter(item => {
             const matchMunicipio = municipio ? (item.municipi && item.municipi.toLowerCase().includes(municipio)) : true;
@@ -83,7 +100,7 @@ app.get('/buscador', (req, res) => {
             return matchMunicipio && matchAnyo;
         });
     }
-    res.render('buscador', { encontrados });
+    res.render('buscador', { encontrados, years, anyo }); // <-- Añade 'anyo' aquí
 });
 
 

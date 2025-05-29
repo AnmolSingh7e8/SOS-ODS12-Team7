@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mapa de Municipios - ODS 12</title>
   <link rel="stylesheet" href="/style/mapaStyle.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
+
 <body>
+  <div id="particles-js"></div>
 
   <header>
-    <h1>Recursos ODS 12</h1>
+    <h1>Mapa ODS 12</h1>
   </header>
 
   <nav>
@@ -20,7 +23,7 @@
       <li><a href="/info">Investigación</a></li>
       <li><a href="/buscador">Buscador</a></li>
       <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#conclusion">Conclusión</a></li>
+      <li><a href="/conclusiones">Conclusión</a></li>
     </ul>
   </nav>
 
@@ -28,41 +31,45 @@
     <h2>Mapa de Municipios (ODS 12)</h2>
     <div id="map"></div>
   </div>
-<script>
-  fetch('/api/mapa')
-    .then(res => res.json())
-    .then(data => {
-      // Si tus datos tienen lat/lon como número:
-      let municipios = data.filter(d => d.lat && d.lon);
+  <script>
+    fetch('/api/mapa')
+      .then(res => res.json())
+      .then(data => {
+        // Si tus datos tienen lat/lon como número:
+        let municipios = data.filter(d => d.lat && d.lon);
 
-      if (!municipios.length) return;
+        if (!municipios.length) return;
 
-      const avgLat = municipios.reduce((sum, d) => sum + d.lat, 0) / municipios.length;
-      const avgLon = municipios.reduce((sum, d) => sum + d.lon, 0) / municipios.length;
+        const avgLat = municipios.reduce((sum, d) => sum + d.lat, 0) / municipios.length;
+        const avgLon = municipios.reduce((sum, d) => sum + d.lon, 0) / municipios.length;
 
-      const map = L.map('map').setView([avgLat, avgLon], 9);
+        const map = L.map('map').setView([avgLat, avgLon], 9);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap, &copy; CartoDB',
-      }).addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap, &copy; CartoDB',
+        }).addTo(map);
 
-      municipios.forEach((item) => {
-        const radius = item["Generació Residus Municipal Totals"] / 10000 + 4;
-        L.circleMarker([item.lat, item.lon], {
-          radius: radius,
-          color: 'blue',
-          fillColor: 'blue',
-          fillOpacity: 0.6
-        }).bindPopup(
-          `<strong>${item.Municipi}</strong><br/>${item["Generació Residus Municipal Totals"].toLocaleString()} kg`
-        ).addTo(map);
+        municipios.forEach((item) => {
+          const radius = item["Generació Residus Municipal Totals"] / 10000 + 4;
+          L.circleMarker([item.lat, item.lon], {
+            radius: radius,
+            color: 'blue',
+            fillColor: 'blue',
+            fillOpacity: 0.6
+          }).bindPopup(
+            `<strong>${item.Municipi}</strong><br/>${item["Generació Residus Municipal Totals"].toLocaleString()} kg`
+          ).addTo(map);
+        });
       });
-    });
-</script>
-
-
-  <footer>
-    <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
-  </footer>
+  </script>
+  <script src="/particulas/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', '/particulas/particlesjs-config.json');
+  </script>
 </body>
+<footer>
+  <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
+  <p>Instituto Tecnológico de Barcelona</p>
+</footer>
+
 </html>

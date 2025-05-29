@@ -2,73 +2,96 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Buscador por Municipio y Año</title>
-  <link rel="stylesheet" href="/style/buscadorStyle.css">
+  <link rel="stylesheet" href="/style/buscadorStyle.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>Recursos ODS 12</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/info">Investigación</a></li>
-      <li><a href="/buscador">Buscador</a></li>
-      <li><a href="/mapa">Mapa</a></li>
-      <li><a href="#conclusion">Conclusión</a></li>
+  <div id="particles-js"></div>
 
-    </ul>
-  </nav>
-  <div class="buscador-container">
-    <h2>Buscar Municipio y/o Año</h2>
-    <form method="get" action="/buscador" autocomplete="off">
-      <input type="text" name="municipio" placeholder="Escribe el municipio...">
-      <input type="text" name="anyo" placeholder="Escribe el año...">
-      <button type="submit">Buscar</button>
-    </form>
-    <div id="resultado">
-      <% if (typeof encontrados !=='undefined' ) { %>
-        <% if (encontrados.length> 0) { %>
-          <b>Resultados:</b>
-          <% encontrados.forEach(function(m) { %>
-            <div class="municipio-card">
-              <ul>
-                <li><b>Código municipio:</b>
-                  <%= m.codi_municipi %>
-                </li>
-                <li><b>Municipio:</b>
-                  <%= m.municipi %>
-                </li>
-                <li><b>Comarca:</b>
-                  <%= m.comarca %>
-                </li>
-                <li><b>Población:</b>
-                  <%= m.poblaci %>
-                </li>
-                <li><b>Generación residuos municipal:</b>
-                  <%= m.generaci_residus_municipal %>
-                </li>
-                <li><b>Kg/hab/día:</b>
-                  <%= m.kg_hab_dia %>
-                </li>
-                <li><b>Kg/hab/año:</b>
-                  <%= m.kg_hab_any %>
-                </li>
-              </ul>
-            </div>
-            <% }); %>
-              <% } else { %>
-                <span class="noResult">No se encontró ningún municipio o año.</span>
-                <% } %>
+  <div class="page-content">
+    <header>
+      <h1>Buscador ODS 12</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/info">Investigación</a></li>
+        <li><a href="/buscador">Buscador</a></li>
+        <li><a href="/mapa">Mapa</a></li>
+        <li><a href="/conclusiones">Conclusión</a></li>
+      </ul>
+    </nav>
+
+    <div class="buscador-container">
+      <h2>Buscar Municipio y/o Año</h2>
+      <form method="get" action="/buscador" autocomplete="off">
+        <input type="text" name="municipio" placeholder="Escribe el municipio..." />
+        <div class="form-row">
+          <select name="anyo">
+            <option value="">Selecciona un año...</option>
+            <% if (typeof years !=='undefined' ) { %>
+              <% years.forEach(function(y) { %>
+                <option value="<%= y %>" <%=(anyo==y) ? 'selected' : '' %>><%= y %>
+                </option>
+                <% }); %>
                   <% } %>
+          </select>
+          <button type="submit">Buscar</button>
+        </div>
+      </form>
+      <div id="resultado">
+        <% if (typeof encontrados !=='undefined' ) { %>
+          <% if (encontrados.length> 0) { %>
+            <b>Resultados:</b>
+            <% encontrados.forEach(function (m) { %>
+              <div class="municipio-card">
+                <ul>
+                  <li><b>Código municipio:</b>
+                    <%= m.codi_municipi %>
+                  </li>
+                  <li><b>Municipio:</b>
+                    <%= m.municipi %>
+                  </li>
+                  <li><b>Comarca:</b>
+                    <%= m.comarca %>
+                  </li>
+                  <li><b>Población:</b>
+                    <%= m.poblaci %>
+                  </li>
+                  <li><b>Generación residuos municipal:</b>
+                    <%= m.generaci_residus_municipal %>
+                  </li>
+                  <li><b>Kg/hab/día:</b>
+                    <%= m.kg_hab_dia %>
+                  </li>
+                  <li><b>Kg/hab/año:</b>
+                    <%= m.kg_hab_any %>
+                  </li>
+                </ul>
+              </div>
+              <% }); %>
+                <% } else { %>
+                  <span class="noResult">No se encontró ningún municipio o año.</span>
+                  <% } %>
+                    <% } %>
+      </div>
     </div>
-</div>
-<footer>
-      <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
-    </footer>
+  </div>
+
+  <footer>
+    <p>Team 7 - Anmolpreet Singh - Angel Sardinha - Ainara Valdivieso - Usman Rashid</p>
+    <p>Instituto Tecnológico de Barcelona</p>
+  </footer>
+
+  <script src="/particulas/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', '/particulas/particlesjs-config.json');
+  </script>
 </body>
+
 </html>

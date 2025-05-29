@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f8f8f8;
@@ -133,14 +140,16 @@ ul {
     padding-left: 1em;
 }
 
+/* Footer sticky abajo */
 footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  flex-shrink: 0; /* Que no se achique */
+  margin-top: 2rem;
 }
 
 #boxplotComarca {
@@ -192,3 +201,4 @@ footer {
     padding: 0.7rem 0.2rem 1rem 0.2rem;
   }
 }
+

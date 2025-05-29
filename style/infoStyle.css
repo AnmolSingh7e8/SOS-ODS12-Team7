@@ -1,65 +1,155 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f8f8f8;
-    color: #222;
-    margin: 0;
-    padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #222;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    background-color: #bf8b2e;
-    color: #fff;
-    padding: 2rem 1rem 1rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background-color: #bf8b2e;
+  color: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
-    margin-bottom: 0.2em;
-    font-size: 2.5rem;
+  margin-bottom: 0.2em;
+  font-size: 2.5rem;
 }
 
 h2 {
-    margin-top: 0;
-    font-weight: 400;
-    font-size: 1.3rem;
+  color: #b8860b;
+  margin-top: 0;
+  font-weight: 400;
+  font-size: 1.3rem;
 }
 
 nav {
-    background: #fffbe6;
-    padding: 0.5rem 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  background: #fffbe6;
+  padding: 0.5rem 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
-    color: #b8860b;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
+  color: #b8860b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 nav a:hover {
-    color: #ff8800;
+  color: #ff8800;
 }
 
 section {
-    background: #fff;
-    margin: 2rem auto;
-    padding: 1.5rem 2rem;
-    max-width: 1000px;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  background: #fff;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  max-width: 1100px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
 
+/* FLEX PARA SECCIONES Y TABLA */
+.ods-table-section {
+  max-width: 1100px;
+  margin: 2rem auto 0 auto;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.ods-table-container {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.ods-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f6f2; /* Beige claro */
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.98em;
+  box-shadow: 0 2px 8px rgba(191, 139, 46, 0.07);
+}
+
+.ods-table-title {
+  font-size: 1.2em;
+  color: #b8860b;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ods-table th,
+.ods-table td {
+  border: 1px solid #e0d7c3;
+  padding: 0.7em 0.8em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ods-table th {
+  background: #ede5da;
+  color: #7a5a00;
+  font-weight: bold;
+}
+
+.ods-table tr:nth-child(even) td {
+  background: #f4ede4;
+}
+
+@media (max-width: 1100px) {
+  .ods-flex-table {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .ods-table-container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Imagen y texto ODS */
+.ods-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.ods-text {
+  flex: 1 1 0;
+}
+
+.ods-image {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Gráficos */
 .grafico-container {
   max-width: 1300px;
   margin: 2rem auto;
@@ -84,21 +174,27 @@ section {
 .graficos-table > div {
   background: #fffbe6;
   border-radius: 16px;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem; /* Más espacio interno */
   box-shadow: 0 2px 12px rgba(191,139,46,0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 0;
   min-height: 0;
-  width: 520px;
-  max-width: 95vw;
+  width: 650px;      /* Antes 520px */
+  max-width: 850px;  /* Antes 600px */
   transition: box-shadow 0.2s;
   border: 1.5px solid #ffe4b2;
 }
 
 .graficos-table > div:hover {
-  box-shadow: 0 4px 24px rgba(191,139,46,0.18);
+  box-shadow: 0 4px 24px rgba(191, 139, 46, 0.18);
+}
+
+.graficos-table p{
+  font-size: 0.95rem;
+  margin-top: 0.5em;
+  text-align: center;
 }
 
 .graficos-table h4 {
@@ -110,50 +206,35 @@ section {
   letter-spacing: 0.5px;
 }
 
+/* Canvas y Plotly sin position absolute para evitar overflow */
 .graficos-table canvas,
-.graficos-table .plotly-graph-div,
-.graficos-table > div[id^="boxplot"] {
+.graficos-table .plotly-graph-div {
   width: 100% !important;
-  height: 340px !important;
-  max-width: 480px;
+  height: 100% !important;
+  max-width: 600px;
   margin: 0 auto;
-  display: block;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 1px 8px rgba(191,139,46,0.07);
+  box-shadow: 0 1px 8px rgba(191, 139, 46, 0.07);
   border: 1px solid #f3e2c0;
+  object-fit: contain;
+  position: static !important;
 }
 
-@media (max-width: 1100px) {
-  .graficos-table {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .graficos-table > div {
-    width: 98vw;
-    max-width: 98vw;
-  }
-  .graficos-table canvas,
-  .graficos-table .plotly-graph-div,
-  .graficos-table > div[id^="boxplot"] {
-    max-width: 98vw;
-  }
-}
-
-@media (max-width: 700px) {
-  .graficos-table > div {
-    padding: 0.7rem 0.2rem 1rem 0.2rem;
-  }
+/* Para boxplot */
+.graficos-table > div[id^="boxplot"] {
+  padding: 0 !important;
+  height: 400px !important
 }
 
 h3 {
-    color: #b8860b;
-    margin-top: 0;
+  color: #b8860b;
+  margin-top: 0;
 }
 
 ul {
-    list-style: disc inside;
-    padding-left: 1em;
+  list-style: disc inside;
+  padding-left: 1em;
 }
 
 #boxplotComarca {
@@ -163,60 +244,23 @@ ul {
   margin: auto;
 }
 
-.ods-flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.ods-text {
-  flex: 1 1 0;
-}
-
-.ods-image {
-  max-width: 150px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.graficos-doble {
-  background: #fffbe6;
-  border-radius: 16px;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
-  box-shadow: 0 2px 12px rgba(191,139,46,0.10);
-  border: 1.5px solid #ffe4b2;
-  width: 100%;
-  max-width: 1100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.graficos-doble-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  width: 100%;
-}
-
-.graficos-doble-flex canvas,
-.graficos-doble-flex .plotly-graph-div {
-  flex: 1 1 480px;
-  height: 340px !important;
-  max-width: 480px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 8px rgba(191,139,46,0.07);
-  border: 1px solid #f3e2c0;
+body > *:not(#particles-js) {
+  position: relative;
+  z-index: 1;
 }
 
 .titulo-separador {
-  width: 100vw; 
+  width: 100vw;
   background: linear-gradient(to right, #fff3d0, #ffe9b3);
   border-top: 3px solid #bf8b2e;
   border-bottom: 3px solid #bf8b2e;
@@ -234,12 +278,16 @@ ul {
   letter-spacing: 1px;
 }
 
+
+
+/* Footer sticky abajo */
 footer {
   background: #222;
   color: #fff;
   text-align: center;
   padding: 1rem 0;
-  margin-top: 2rem;
   font-size: 1rem;
   letter-spacing: 0.5px;
+  flex-shrink: 0; /* Que no se achique */
+  margin-top: 2rem;
 }

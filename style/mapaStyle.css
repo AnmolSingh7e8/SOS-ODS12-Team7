@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
 body {
       background: #f4f6f8;
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -88,12 +95,29 @@ nav a:hover {
   margin: auto;
 }
 
+/* Footer sticky abajo */
 footer {
   background: #222;
   color: #fff;
   text-align: center;
   padding: 1rem 0;
-  margin-top: 2rem;
   font-size: 1rem;
   letter-spacing: 0.5px;
+  flex-shrink: 0; /* Que no se achique */
+  margin-top: 2rem;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body > *:not(#particles-js) {
+  position: relative;
+  z-index: 1;
 }
