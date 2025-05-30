@@ -121,3 +121,10 @@ body > *:not(#particles-js) {
   position: relative;
   z-index: 1;
 }
+
+h3 {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: #bf8b2e;
+}

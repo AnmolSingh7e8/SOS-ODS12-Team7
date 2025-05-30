@@ -315,7 +315,7 @@ new Chart(document.getElementById('lineChartInteres'), {
       .then(data => {
         // Gráfico de barras de tipos de residuos
         const wasteColumns = ['paper_i_cartr', 'vidre', 'envasos_lleugers', 'mat_ria_org_nica', 'residus_voluminosos_fusta'];
-        const wasteLabels = ['Paper i cartró', 'Vidre', 'Envasos lleugers', 'Matèria orgànica', 'Residus voluminosos + fusta'];
+        const wasteLabels = ['Papel y cartón', 'Vidrio', 'Envases ligeros', 'Matrria orgánica', 'Residuos voluminosos + madera'];
         const wasteSums = wasteColumns.map(col =>
           data.reduce((sum, row) => sum + (parseFloat(row[col]) || 0), 0)
         );
@@ -365,7 +365,6 @@ new Chart(document.getElementById('lineChartInteres'), {
 
         Plotly.newPlot('boxplotComarca', boxData, {
           margin: { t: 30, b: 120 },
-          title: 'Distribució de Kg/hab/any per Comarca (2023)',
           xaxis: { tickangle: -45 }
         });
 
